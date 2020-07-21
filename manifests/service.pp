@@ -13,9 +13,7 @@ class datadog_agent::service(
       service { $datadog_agent::params::service_name:
         ensure  => $service_ensure,
         enable  => $service_enable,
-        require => Package[$datadog_agent::params::package_name],
-        stop    => "powershell.exe -command { Stop-Service ${datadog_agent::params::service_name} -Force }",
-        restart => "powershell.exe -command { Restart-Service ${datadog_agent::params::service_name} -Force }"
+        require => Package[$datadog_agent::params::package_name]
       }
   } else {
     if $service_provider {

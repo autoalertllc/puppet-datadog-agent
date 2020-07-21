@@ -67,7 +67,7 @@ class datadog_agent::windows(
       ensure          => $ensure_version,
       provider        => 'windows',
       source          => $msi_full_path,
-      install_options => ['/norestart', {'APIKEY' => $api_key, 'HOSTNAME' => $hostname, 'TAGS' => $tags}]
+      install_options => ['/norestart', {'APIKEY' => $api_key, 'HOSTNAME' => $hostname, 'APM_ENABLED' => 'false', 'PROCESS_ENABLED' => 'false'}]
     }
 
   } else {
